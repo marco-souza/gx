@@ -1,0 +1,7 @@
+# Ignore dependency files
+vendor/
+tmp/
+
+# Ignore build artifacts
+build/
+dist/
