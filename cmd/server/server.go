@@ -5,18 +5,24 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 
+	"github.com/marco-souza/gx/internal/config"
 	"github.com/marco-souza/gx/internal/routes"
 )
 
 type Server struct {
 	addr     string
 	hostname string
-	port     int
+	port     string
 	app      *fiber.App
 }
 
-func New(hostname string, port int) *Server {
-	addr := fmt.Sprintf("%s:%d", hostname, port)
+var conf = config.Load()
+
+func New() *Server {
+	hostname := conf.Hostname
+	port := conf.Port
+	addr := fmt.Sprintf("%s:%s", hostname, port)
+
 	return &Server{
 		addr:     addr,
 		port:     port,

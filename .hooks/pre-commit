@@ -1,5 +1,6 @@
 #! /bin/bash
-staged_go_files=$(git diff --name-only --cached | grep '.go')
 
-go fmt $staged_go_files && git update-index --again
+# staged_go_files=$(git diff --name-only --cached | grep '.go')
 # git add $staged_go_files
+
+make fmt && git update-index --again
