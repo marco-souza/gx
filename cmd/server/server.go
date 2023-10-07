@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/template/html/v2"
 
 	"github.com/marco-souza/gx/internal/config"
 	"github.com/marco-souza/gx/internal/routes"
@@ -27,7 +28,9 @@ func New() *Server {
 		addr:     addr,
 		port:     port,
 		hostname: hostname,
-		app:      fiber.New(),
+		app: fiber.New(fiber.Config{
+			Views: html.New("./views", ".html"),
+		}),
 	}
 }
 

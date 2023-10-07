@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{{.Title}}</title>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- tailwind + daisyui -->
+        <link
+          href="https://cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css"
+          rel="stylesheet"
+          type="text/css"
+        />
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        <!-- htmx -->
+        <script src="https://unpkg.com/htmx.org@1.9.6" integrity="sha384-FhXw7b6AlE/jyjlZH5iHa/tTe9EpJ1Y55RjcgPbjeWMskSxZt1v9qkxLJWNJaGni" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <main>
+            <h1>{{.Title}}</h1>
+
+            <button
+              hx-get="/api/now"
+              hx-swap="innerHTML"
+              hx-target="#output"
+              hx-indicator="#indicator"
+              class="btn btn-secondary"
+            >
+              Click Me
+            </button>
+
+            <div id="indicator" class="htmx-indicator loading loading-spinner"></div>
+
+            <code id="output"></code>
+        </main>
+    </body>
+</html>
