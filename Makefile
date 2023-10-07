@@ -2,7 +2,7 @@ run: cmd/gx/main.go
 	air
 
 deploy: ./fly.toml
-	pkgx fly launch --now
+	pkgx fly deploy --now -y
 
 build: cmd/gx/main.go
 	go build -o ./build/gx ./cmd/gx/main.go
