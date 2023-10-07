@@ -15,9 +15,9 @@ type Server struct {
 	app      *fiber.App
 }
 
-func New(hostname string, port int) Server {
+func New(hostname string, port int) *Server {
 	addr := fmt.Sprintf("%s:%d", hostname, port)
-	return Server{
+	return &Server{
 		addr:     addr,
 		port:     port,
 		hostname: hostname,
