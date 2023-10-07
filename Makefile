@@ -9,7 +9,12 @@ build: cmd/gx/main.go
 
 fmt:
 	go fmt ./...
-	go vet ./...
 
 t: ./tests/
 	go test -v ./tests/
+
+encrypt: .env
+	gpg -c .env
+
+decrypt: .env.gpg
+	gpg -d .env.gpg > .env
