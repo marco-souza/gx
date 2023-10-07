@@ -2,6 +2,9 @@
 vendor/
 tmp/
 
+# Ignore config files
+.env
+
 # Ignore build artifacts
 build/
 dist/
