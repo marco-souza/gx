@@ -8,9 +8,11 @@ func SetupRoutes(app *fiber.App) {
 }
 
 func pageHandler(c *fiber.Ctx) error {
+	// TODO: handle /pages routing path
 	return c.SendString("Hello, World 👋!")
 }
 
 func apiHandler(c *fiber.Ctx) error {
+	// TODO: render gotmpl from /elements
 	return c.SendString("Hello, API 👋!")
 }
