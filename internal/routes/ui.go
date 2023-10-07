@@ -22,8 +22,8 @@ func uiHandler(c *fiber.Ctx) error {
 		"https://github.com/marco-souza/gx",
 		[]MenuItem{
 			{"/", "Home"},
-			{"/blog", "Blog"},
-			{"/playground", "Playground"},
+			{"https://marco.deno.dev/blog", "Blog"},
+			{"https://marco.deno.dev/playground", "Playground"},
 		},
 	}
 	return c.Render("index", params)
