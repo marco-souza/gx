@@ -29,7 +29,8 @@ func New() *Server {
 		port:     port,
 		hostname: hostname,
 		app: fiber.New(fiber.Config{
-			Views: html.New("./views", ".html"),
+			Views:       html.New("./views", ".html"),
+			ViewsLayout: "layouts/main",
 		}),
 	}
 }

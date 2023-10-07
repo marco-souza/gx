@@ -9,5 +9,5 @@ import (
 func apiHandler(c *fiber.Ctx) error {
 	// TODO: render gotmpl from /elements
 	now := time.Now().String()
-	return c.Render("now", fiber.Map{"Time": now})
+	return c.Render("now", fiber.Map{"Time": now}, "layouts/empty")
 }

@@ -1,13 +1,30 @@
 package routes
 
-import "github.com/gofiber/fiber/v2"
+import (
+	"github.com/gofiber/fiber/v2"
+)
 
-type WebParams struct {
-	Title string
+type MenuItem struct {
+	Href string
+	Name string
+}
+
+type Params struct {
+	Title     string
+	Repo      string
+	MenuItems []MenuItem
 }
 
 func uiHandler(c *fiber.Ctx) error {
 	// TODO: handle /pages routing path
-	params := WebParams{"Hello, World 👋!"}
+	params := Params{
+		"Hello, World 👋!",
+		"https://github.com/marco-souza/gx",
+		[]MenuItem{
+			{"/", "Home"},
+			{"/blog", "Blog"},
+			{"/playground", "Playground"},
+		},
+	}
 	return c.Render("index", params)
 }

@@ -1,0 +1,11 @@
+<div class="navbar">
+  <div class="navbar-start">{{template "partials/menu" .}}</div>
+
+  <div class="navbar-center">{{template "partials/logo" .}}</div>
+
+  <div class="navbar-end">
+    <a href="{{.Repo}}" target="_black" class="btn btn-ghost btn-circle">
+      {{template "partials/github-icon" .}}
+    </a>
+  </div>
+</div>
