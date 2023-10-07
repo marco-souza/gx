@@ -1,28 +1,15 @@
+# Complete example at <https://github.com/cosmtrek/air/blob/master/air_example.toml>
 root = "."
-testdata_dir = "testdata"
 tmp_dir = "tmp"
+testdata_dir = "testdata"
 
 [build]
   args_bin = []
-  bin = "./tmp/main"
-  cmd = "make t && make temp"
-  delay = 0
-  exclude_dir = ["assets", "tmp", "vendor", "testdata"]
-  exclude_file = []
-  exclude_unchanged = false
-  follow_symlink = false
-  full_bin = ""
-  include_dir = []
+  bin = "./tmp/gx"
+  cmd = "go build -o ./tmp/gx ./cmd/gx/main.go"
   include_ext = ["go", "tpl", "tmpl", "html"]
-  include_file = []
-  kill_delay = "0s"
-  log = "build-errors.log"
-  poll = false
-  poll_interval = 0
-  rerun = false
-  rerun_delay = 500
-  send_interrupt = false
-  stop_on_error = false
+  exclude_dir = ["assets", "tmp", "vendor", "testdata"]
+  exclude_regex = ["(\\.null-ls.*|_test)\\.go"]
 
 [color]
   app = ""
