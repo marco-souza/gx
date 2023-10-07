@@ -1,4 +1,4 @@
-run: main.go
+run: cmd/gx/main.go
 	air
 
 fmt:
