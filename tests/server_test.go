@@ -12,7 +12,7 @@ var (
 )
 
 func TestCanCreateServer(t *testing.T) {
-	s := server.New(hostname, port)
+	s := server.New()
 	if s == nil {
 		t.Fatal("Failed to create server")
 	}
