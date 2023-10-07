@@ -1,8 +1,9 @@
 version: "3.8"
 services:
-  web:
+  app:
     build:
       context: .
+      target: dev
       dockerfile: Dockerfile
     environment:
       HOST: "0.0.0.0"

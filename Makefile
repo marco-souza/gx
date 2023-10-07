@@ -1,8 +1,11 @@
 run: cmd/gx/main.go
 	air
 
+deploy: ./fly.toml
+	pkgx fly launch --now
+
 build: cmd/gx/main.go
-	go build -o ./bin/gx ./cmd/gx/main.go
+	go build -o ./build/gx ./cmd/gx/main.go
 
 fmt:
 	go fmt ./...

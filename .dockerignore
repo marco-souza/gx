@@ -1,0 +1,12 @@
+# flyctl launch added from .gitignore
+# Ignore dependency files
+**/vendor
+**/tmp
+
+# Ignore config files
+**/.env
+
+# Ignore build artifacts
+**/build
+**/dist
+fly.toml

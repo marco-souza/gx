@@ -1,12 +1,28 @@
-# Choose whatever you want, version >= 1.16
-FROM golang:1.21-alpine
-
+# base stage
+FROM golang:1.21-alpine as base
 WORKDIR /app
+COPY ./views/ ./views/
 
-RUN go install github.com/cosmtrek/air@latest
+# pre-build stage
+FROM base as pre-build
 
 COPY go.mod go.sum ./
+RUN go mod tidy
 RUN go mod download
 RUN apk add --no-cache make
 
-CMD ["air", "-c", ".air.toml"]
+COPY . .
+
+# dev stage
+FROM pre-build as dev
+RUN go install github.com/cosmtrek/air@latest
+CMD ["make", "run"]
+
+# build stage
+FROM pre-build as build
+RUN make build
+
+# prdo stage
+FROM base as prod
+COPY --from=build /app/build/gx ./
+CMD ["/app/gx"]
