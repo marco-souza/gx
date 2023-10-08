@@ -1,6 +1,10 @@
 package pages
 
-import "github.com/gofiber/fiber/v2"
+import (
+	"github.com/gofiber/fiber/v2"
+
+	"github.com/marco-souza/gx/internal/config"
+)
 
 type MenuItem struct {
 	Href string
@@ -8,13 +12,19 @@ type MenuItem struct {
 }
 
 type Params struct {
+	IsEnv     bool
 	Title     string
 	Repo      string
 	MenuItems []MenuItem
 }
 
+var conf = config.Load()
+
 func rootHandler(c *fiber.Ctx) error {
+	IsDev := conf.Env == "development"
+
 	params := Params{
+		IsDev,
 		"Hello, World 👋!",
 		"https://github.com/marco-souza/gx",
 		[]MenuItem{

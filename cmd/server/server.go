@@ -17,7 +17,10 @@ type Server struct {
 	app      *fiber.App
 }
 
-var conf = config.Load()
+var (
+	conf         = config.Load()
+	shouldUpdate = true
+)
 
 func New() *Server {
 	hostname := conf.Hostname
@@ -25,7 +28,6 @@ func New() *Server {
 	addr := fmt.Sprintf("%s:%s", hostname, port)
 
 	engine := html.New("./views", ".html")
-
 	if conf.Env == "development" {
 		engine.Debug(true)
 		engine.Reload(true)
@@ -52,5 +54,15 @@ func (s *Server) Start() {
 }
 
 func (s *Server) setupRoutes() {
+	// setup reload
+	if conf.Env == "development" {
+		s.app.Get("/hot-reload", hotReloadHandler)
+	}
+
 	routes.SetupRoutes(s.app)
+}
+
+func hotReloadHandler(c *fiber.Ctx) error {
+	defer func() { shouldUpdate = false }()
+	return c.SendString(fmt.Sprintf("%t", shouldUpdate))
 }

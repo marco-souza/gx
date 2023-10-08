@@ -1,0 +1,10 @@
+{{if .IsEnv}}
+  on load repeat forever
+    wait 300ms
+    async do fetch /hot-reload
+    if result == "true"
+      reload() the location of the window
+    end
+  end
+{{end}}
+
