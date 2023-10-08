@@ -8,7 +8,8 @@ build: cmd/gx/main.go
 	go build -o ./build/gx ./cmd/gx/main.go
 
 fmt:
-	go fmt ./...
+	go fmt ./... && \
+  bunx prettier -w views ./README.md ./docker-compose.yml
 
 t: ./tests/
 	go test -v ./tests/
