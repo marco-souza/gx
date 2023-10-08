@@ -8,3 +8,4 @@ tmp/
 # Ignore build artifacts
 build/
 dist/
+*fiber*

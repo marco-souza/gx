@@ -2,6 +2,7 @@ package server
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/template/html/v2"
@@ -58,6 +59,15 @@ func (s *Server) setupRoutes() {
 	if conf.Env == "development" {
 		s.app.Get("/hot-reload", hotReloadHandler)
 	}
+
+	// setup static resources
+	s.app.Static("/static", "./static", fiber.Static{
+		Compress:      true,
+		ByteRange:     true,
+		Browse:        true,
+		CacheDuration: 10 * time.Second,
+		MaxAge:        3600,
+	})
 
 	routes.SetupRoutes(s.app)
 }
