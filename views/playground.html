@@ -1,0 +1,16 @@
+<h1>{{.Title}}</h1>
+
+<button
+  hx-get="/api/now"
+  hx-swap="innerHTML"
+  hx-target="#output"
+  hx-indicator="#indicator"
+  class="btn btn-secondary"
+>
+  Click Me
+</button>
+
+<div id="indicator" class="htmx-indicator loading loading-spinner"></div>
+
+<code id="output"></code>
+
