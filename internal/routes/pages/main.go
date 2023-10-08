@@ -8,6 +8,7 @@ import (
 
 var registers = []entities.Register{
 	root, playground,
+	notFound,
 }
 
 func Apply(router fiber.Router) {
