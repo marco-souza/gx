@@ -2,6 +2,7 @@ package server
 
 import (
 	"fmt"
+	"log"
 	"time"
 
 	"github.com/gofiber/fiber/v2"
@@ -48,19 +49,16 @@ func New() *Server {
 func (s *Server) Start() {
 	s.setupRoutes()
 
-	err := s.app.Listen(s.addr)
-	if err != nil {
-		fmt.Println("an error occured: ", err)
-	}
+	log.Fatal(s.app.Listen(s.addr))
 }
 
 func (s *Server) setupRoutes() {
-	// setup reload
 	if conf.Env == "development" {
+		log.Println("setup hot reload")
 		s.app.Get("/hot-reload", hotReloadHandler)
 	}
 
-	// setup static resources
+	log.Println("setup static resources")
 	s.app.Static("/static", "./static", fiber.Static{
 		Compress:      true,
 		ByteRange:     true,
