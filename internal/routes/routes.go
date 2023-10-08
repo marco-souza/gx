@@ -8,6 +8,6 @@ import (
 )
 
 func SetupRoutes(app *fiber.App) {
-	pages.Apply(app.Group("/"))
 	api.Apply(app.Group("/api"))
+	pages.Apply(app.Group("/"))
 }
