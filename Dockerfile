@@ -2,6 +2,7 @@
 FROM golang:1.21-alpine as base
 WORKDIR /app
 COPY ./views/ ./views/
+COPY ./static/ ./static/
 
 # pre-build stage
 FROM base as pre-build
