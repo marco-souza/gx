@@ -12,6 +12,7 @@ primary_region = "gru"
 [env]
   HOST = "0.0.0.0"
   PORT = "8080"
+  ENV = "production"
 
 [http_service]
   internal_port = 8080

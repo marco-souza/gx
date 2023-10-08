@@ -9,6 +9,7 @@ import (
 type Config struct {
 	Hostname string
 	Port     string
+	Env      string // development | production
 }
 
 func Load() *Config {
@@ -18,6 +19,7 @@ func Load() *Config {
 	return &Config{
 		Hostname: env("HOST", "localhost"),
 		Port:     env("PORT", "3001"),
+		Env:      env("ENV", "development"),
 	}
 }
 

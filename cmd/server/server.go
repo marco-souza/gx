@@ -24,12 +24,19 @@ func New() *Server {
 	port := conf.Port
 	addr := fmt.Sprintf("%s:%s", hostname, port)
 
+	engine := html.New("./views", ".html")
+
+	if conf.Env == "development" {
+		engine.Debug(true)
+		engine.Reload(true)
+	}
+
 	return &Server{
 		addr:     addr,
 		port:     port,
 		hostname: hostname,
 		app: fiber.New(fiber.Config{
-			Views:       html.New("./views", ".html"),
+			Views:       engine,
 			ViewsLayout: "layouts/main",
 		}),
 	}
