@@ -1,8 +1,6 @@
-package routes
+package pages
 
-import (
-	"github.com/gofiber/fiber/v2"
-)
+import "github.com/gofiber/fiber/v2"
 
 type MenuItem struct {
 	Href string
@@ -15,8 +13,7 @@ type Params struct {
 	MenuItems []MenuItem
 }
 
-func uiHandler(c *fiber.Ctx) error {
-	// TODO: handle /pages routing path
+func rootHandler(c *fiber.Ctx) error {
 	params := Params{
 		"Hello, World 👋!",
 		"https://github.com/marco-souza/gx",
@@ -26,5 +23,10 @@ func uiHandler(c *fiber.Ctx) error {
 			{"https://marco.deno.dev/playground", "Playground"},
 		},
 	}
+
 	return c.Render("index", params)
+}
+
+func root(router fiber.Router) {
+	router.Get("/", rootHandler)
 }
