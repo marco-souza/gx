@@ -6,12 +6,15 @@ import (
 	"strings"
 
 	"github.com/gofiber/fiber/v2"
+
+	"github.com/marco-souza/gx/internal/github"
 )
 
-type IndexProps struct {
+type rootProps struct {
 	Params
 	PrimaryBtn   string
 	SecondaryBtn string
+	Profile      github.GitHubUser
 }
 
 func contactURL() string {
@@ -29,10 +32,11 @@ func contactURL() string {
 }
 
 func rootHandler(c *fiber.Ctx) error {
-	props := IndexProps{
+	props := rootProps{
 		PrimaryBtn:   contactURL(),
 		SecondaryBtn: "/resume",
 		Params:       defaultParams,
+		Profile:      github.User("marco-souza"),
 	}
 
 	return c.Render("index", props)
