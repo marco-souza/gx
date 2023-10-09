@@ -21,9 +21,11 @@
   </div>
   <div class="gap-8 grid w-full grid-cols-1 sm:mx-20 sm:grid-cols-2">
     <a
-      href="mailto:marco@tremtec.com?subject=Hi Marco, let's have a coffee!"
-      class="btn btn-outline text-pink-400 hover:text-white hover:bg-pink-400 css#1klgmwn"
-      >Let's have a Coffee ☕️</a
-    ><a href="/resume" class="btn btn-outline css#1klgmwn">Resume</a>
+      href="{{.PrimaryBtn}}"
+      class="btn btn-outline text-pink-400 hover:text-white hover:bg-pink-400"
+    >
+      Let's have a Coffee ☕️
+    </a>
+    <a href="{{.SecondaryBtn}}" class="btn btn-outline">Resume</a>
   </div>
 </div>
